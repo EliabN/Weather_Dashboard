@@ -16,19 +16,95 @@
     </nav>
 
     <main>
-        <div class="col-12 col-sm-6 col-md-3">
-            <h2 class="p-2">Search for City</h2>
-            <form>
-              <div class="form-group p-2">
-                <input type="text" class="form-control w-100" id="name-input" placeholder="Sydney" />
-                <button class="btn search-btn btn-info w-100 text-white">Search</button>
-                <hr class="section-break-1 bg-dark" />
-              </div>
-            </form>
-            <div class="form-group p-2">
-                <button class="btn search-btn btn-secondary w-100 text-white">Search</button>
-            </div>
-            
+        <!-- align-items-end change the alignment of flex items to end -->
+        <div class="row">
+            <section class="search col-12 col-sm-4 col-md-4 ">
+                <h2 class="p-2">Search for City</h2>
+                <form>
+                  <div class="form-group p-2">
+                    <input type="text" class="form-control w-100" id="name-input" placeholder="Sydney" />
+                    <button class="btn search-btn btn-info w-100 text-white">Search</button>
+                    <hr class="section-break-1 bg-dark" />
+                  </div>
+                </form>
+                <div class="recent p-2">
+                    <button class="btn search-btn btn-secondary w-100 text-white">Sydney</button>
+                </div>
+            </section>
+    
+            <!-- Uses a combination of col-* values to make full-size on small devices and half-size on medium or larger devices -->
+            <section class="details col-12 col-sm-8 col-md-8">
+                <article class="city-info border border-2 p-2">
+                    <h1 class="city-date p-0">Sydney Thur 8th-Aug</h1>
+                    <p id="T">Temp: 36*</p>
+                    <p id="W">Wind 8.43 MHP</p>
+                    <p id="H">Humidity: 44%</p>
+                    <button class="btn btn-primary">More info.</button>
+                </article>
+
+                <article class="forecast row">
+                    <div class="col-12">
+                        <h2>6-Day Forecast</h2>
+
+                        <section class="row justify-content-around">
+                            <div class="col">
+                                <div class="card p-2">
+                                  <h3 class="card-header">Day 1</h3>
+                                  <p id="T">Temp: 36*</p>
+                                  <p id="W">Wind 8.43 MHP</p>
+                                  <p id="H">Humidity: 44%</p>
+                                  <button class="btn btn-block btn-primary">Learn more.</button>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card p-2">
+                                  <h3 class="card-header">Day 2</h3>
+                                  <p id="T">Temp: 36*</p>
+                                  <p id="W">Wind 8.43 MHP</p>
+                                  <p id="H">Humidity: 44%</p>
+                                  <button class="btn btn-block btn-primary">Learn more.</button>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card p-2">
+                                  <h3 class="card-header">Day 3</h3>
+                                  <p id="T">Temp: 36*</p>
+                                  <p id="W">Wind 8.43 MHP</p>
+                                  <p id="H">Humidity: 44%</p>
+                                  <button class="btn btn-block btn-primary">Learn more.</button>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card p-2">
+                                  <h3 class="card-header">Day 4</h3>
+                                  <p id="T">Temp: 36*</p>
+                                  <p id="W">Wind 8.43 MHP</p>
+                                  <p id="H">Humidity: 44%</p>
+                                  <button class="btn btn-block btn-primary">Learn more.</button>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card p-2">
+                                  <h3 class="card-header">Day 5</h3>
+                                  <p id="T">Temp: 36*</p>
+                                  <p id="W">Wind 8.43 MHP</p>
+                                  <p id="H">Humidity: 44%</p>
+                                  <button class="btn btn-block btn-primary">More info.</button>
+                                </div>
+                            </div>
+                              <div class="col">
+                                  <div class="card p-2">
+                                    <h3 class="card-header">Day 6</h3>
+                                    <p id="T">Temp: 36*</p>
+                                    <p id="W">Wind 8.43 MHP</p>
+                                    <p id="H">Humidity: 44%</p>
+                                    <button class="btn btn-block btn-primary">More info.</button>
+                                  </div>
+                              </div>
+                        </section>
+                    </div>
+                </article>
+            </section>
         </div>
     </main>
 </body>
