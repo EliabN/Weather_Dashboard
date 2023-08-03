@@ -7,3 +7,7 @@
 .navbar-brand {
    color: rgb(147, 196, 238)!important;; 
 }
+
+.search-btn {
+    margin-top: 4%;
+}
