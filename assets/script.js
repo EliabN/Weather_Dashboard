@@ -19,6 +19,7 @@ function getName() {
         console.log("Enter City");
     } else {
         console.log("Got city");
+        getWeather(city);
     }
     console.log(city);
 }

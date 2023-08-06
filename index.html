@@ -19,7 +19,7 @@
     <main>
         <!-- align-items-end change the alignment of flex items to end -->
         <div class="row">
-            <section class="search col-12 col-sm-4 col-md-4 ">
+            <section class="search col-12 col-sm-4 col-md-4 col-xl-3">
                 <h2 class="p-2">Search for City</h2>
                 <form>
                   <div class="form-group p-2">
@@ -34,7 +34,7 @@
             </section>
     
             <!-- Uses a combination of col-* values to make full-size on small devices and half-size on medium or larger devices -->
-            <section class="details col-12 col-sm-8 col-md-8">
+            <section class="details col-12 col-sm-8 col-md-8 col-xl-9">
                 <article class="city-info border border-2 p-2">
                     <h1 class="city-date p-0">Sydney Thur 8th-Aug</h1>
                     <p id="T">Temp: 36*</p>
@@ -45,9 +45,9 @@
 
                 <article class="forecast row">
                     <div class="col-12">
-                        <h2>6-Day Forecast</h2>
+                        <h2>5-Day Forecast</h2>
 
-                        <section class="forecast-cards row">
+                        <section class="forecast-cards row col-xl-12">
                             <div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-3">
                                 <div class="card p-2 ">
                                   <h3 class="card-header">Day 1</h3>
@@ -57,7 +57,7 @@
                                   <button class="btn btn-block btn-primary">Learn more.</button>
                                 </div>
                             </div>
-                            <div class="col-12 col-md-6 col-lg-4 col-xl-2">
+                            <div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-3">
                                 <div class="card p-2">
                                   <h3 class="card-header">Day 2</h3>
                                   <p id="T">Temp: 36*</p>
@@ -93,15 +93,6 @@
                                   <button class="btn btn-block btn-primary">More info.</button>
                                 </div>
                             </div>
-                              <div class="col-12 col-md-6 col-lg-4 col-xl-2 ">
-                                  <div class="card p-2">
-                                    <h3 class="card-header">Day 6</h3>
-                                    <p id="T">Temp: 36*</p>
-                                    <p id="W">Wind 8.43 MHP</p>
-                                    <p id="H">Humidity: 44%</p>
-                                    <button class="btn btn-block btn-primary">More info.</button>
-                                  </div>
-                              </div>
                         </section>
                     </div>
                 </article>

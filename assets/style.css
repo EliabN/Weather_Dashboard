@@ -16,3 +16,10 @@
     margin-top: 2%;
     padding-bottom: 0%;
 }
+
+@media (min-width: 1200px) {
+    .forecast-cards .col-xl-2 {
+    flex: 0 0 auto;
+    width: 20%;
+}
+}
