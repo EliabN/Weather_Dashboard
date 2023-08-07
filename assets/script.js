@@ -22,8 +22,8 @@ function getName() {
         displayError.style.visibility = "visible";
     } else {
         console.log("Got city");
-        getWeather(city);
-        getForecast(city)
+        //getWeather(city);
+        //getForecast(city)
     }
     console.log(city);
 }
