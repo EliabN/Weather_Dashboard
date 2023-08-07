@@ -19,7 +19,7 @@
     <main>
         <!-- align-items-end change the alignment of flex items to end -->
         <div class="row">
-            <section class="search col-12 col-sm-4 col-md-4 col-xl-3">
+            <section id="search" class="search col-12 col-sm-4 col-md-4 col-xl-3">
                 <h2 class="p-2">Search for City</h2>
                 <form>
                   <div class="form-group p-2">
@@ -29,8 +29,13 @@
                     <hr class="section-break-1 bg-dark m-0" />
                   </div>
                 </form>
-                <div class="recent p-2">
-                    <button id="recent-btn" class="btn  btn-secondary w-100 text-white">Sydney</button>
+                <div id="recent" class="recent p-2">
+                    <div>
+                        <button id="recent-btn" class="btn  btn-secondary w-100 text-white">Sydney</button>
+                    </div>
+                    <div>
+                        <button id="recent-btn" class="btn  btn-secondary w-100 text-white">Perth</button>
+                    </div>
                 </div>
             </section>
     

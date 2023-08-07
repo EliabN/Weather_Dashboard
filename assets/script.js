@@ -3,17 +3,26 @@ const apiKey = 'fa2010b8940dd9610445d3e38eaccf79'
 // Name of city
 var cityInput = document.getElementById('city-input');
 
-// Recent city button
-//var cityInput = document.getElementById('recent-btn');
-
-var displayError = document.getElementById("error-message")
-
 // Search button clicked
 document.querySelector('.search-btn').addEventListener('click', getName);
 
-// Recent button clicked
-//document.querySelector('.recent-btn').addEventListener('click', displayRecent);
+// Get error-message element
+var displayError = document.getElementById("error-message");
 
+// Function to add event listener to city buttons
+function addCityButtonListener() {
+    // Get all elements with the class "recent-btn"
+    var  recentBtns = document.querySelectorAll("#recent-btn");
+
+    // Loop through each element and add the event listener
+    recentBtns.forEach((recentBtn) => {
+        console.log("Okay")
+        recentBtn.addEventListener("click", displayRecent);
+    });
+}
+  
+// Call the function to add event listeners to existing buttons on page load
+addCityButtonListener();
 
 
 function getName(event) {
@@ -21,16 +30,17 @@ function getName(event) {
     // Get city name
     var city = cityInput.value;
 
-    // Test city
-    //city = "Adelaide";
-
+	// Test city
+    //city = "Sydney";
+    
+    // Check text entered
     if (city === "") {
         console.log("Enter City");
         displayError.style.visibility = "visible";
     } else {
         console.log("Got city");
         getWeather(city);
-        //getForecast(city)
+        getForecast(city)
     }
     console.log(city);
 }
@@ -66,7 +76,7 @@ function getWeather(city) {
       .catch((error) => {
         console.error("Error fetching weather data:", error);
         // Handle the error here or display an error message to the user
-});
+    });
 }
 
 
@@ -96,11 +106,41 @@ function displayWeather(data) {
         <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png" class="city-info-img" alt="Weather icon"/>
     </div>`;
 
-    let searchSec = document.getElementsByClassName('.search')
+    // Get the recent element buttons
+    let resentBtns = document.getElementById('recent');
+    var children = resentBtns.children;
 
-    let recent = `<div class="recent p-2">
-    <button id="recent-btn" class="btn  btn-secondary w-100 text-white">Sydney</button>
-    </div>`
+    console.log(children);
+
+    // Flag to check if city is already present
+    let isCityPresent = false;
+
+    for (let i = 0; i < children.length; i++) {
+        let recentCity = children[i].children[0].innerText.toLowerCase();
+        if (data.name.toLowerCase() === recentCity) {
+          isCityPresent = true;
+          break; // Exit the loop early, as we found a match
+        }
+    }
+
+    // Check if the city is not present, then add a new button
+    if (!isCityPresent) {
+        // Get search section in html
+        let searchSec = document.getElementById('recent');
+      
+        // Button property
+        let recent = `<button id="recent-btn" class="btn  btn-secondary w-100 text-white">${data.name}</button>`;
+      
+        // Create and add button property to div
+        let recentBtn = document.createElement("div");
+        recentBtn.innerHTML = recent;
+      
+        // Display button
+        searchSec.appendChild(recentBtn);
+
+        // Add the event listener to the new button
+        recentBtn.addEventListener("click", displayRecent);
+    }
 }
 
 
@@ -155,25 +195,44 @@ function displayForecast(data) {
             let date = new Date(day.dt *1000).toDateString().split(' 20')[0];
             console.log(day)
 
-            //let date = dateTime[0].split('-')[2]
-            return `<div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-3">
-            <div class="card p-2 ">
-              <h3 class="card-header">${date}</h3>
-              <p id="T">Temp: ${day.main.temp}°C</p>
-              <p id="W">Wind: ${day.wind.speed} mph</p>
-              <p id="H">Humidity: ${day.main.humidity}%</p>
-              <P id="d">Desc: ${day.weather[0].main}</P>
-              <button class="btn btn-block btn-primary">Learn more.</button>
+            let newG = `<div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-3">
+            <div class="p-3 text-white">
+                <h3 class="card-header ">${date}</h3>
+                <div class="col-12">
+                  <div class="forecast-details rounded-2 row align-items-center">
+                    <div class="col">
+                      <p id="T">Temp: ${day.main.temp}°C</p>
+                      <p id="W">Wind: ${day.wind.speed}mph</p>
+                      <p id="H">Humidity: ${day.main.humidity}%</p>
+                      <P id="d">Desc: ${day.weather[0].main}</P>
+                    </div>
+                    <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-12 mb-3">
+                      <img src="https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png" class="city-info-img justify-content-center" alt="Weather icon" />
+                    </div>
+                    <div class="d-flex justify-content-center">
+                      <button class="btn btn-block btn-primary w-75 justify-content-center text-center m-3 mx-auto">Learn more.</button>
+                    </div>
+                  </div>
+                </div>
             </div>
-        </div>`
+            </div>`
+
+            //let date = dateTime[0].split('-')[2]
+            return newG
         }
     }).join(' ');
 }
 
 function displayRecent(event) {
+    // Get name of city
+    let cityName = event.target.innerText;
 
-    
+    // Test name
+    //cityName = "Perth"
 
+    getWeather(cityName)
+    getForecast(cityName)
+    console.log(cityName)
 }
 
 
