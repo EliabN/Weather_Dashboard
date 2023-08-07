@@ -51,7 +51,7 @@ function getName(event) {
 // Fetch the weather response
 function getWeather(city) {
     // url to fetch
-    let url = 'http://api.openweathermap.org/data/2.5/weather?q=' + city + '&lang=en&units=metric&appid=' + apiKey
+    let url = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&lang=en&units=metric&appid=' + apiKey
 
     fetch(url)
       .then((resp) => {
@@ -154,7 +154,7 @@ function displayWeather(data) {
 // Fetch the forecast
 function getForecast(city) {
     // url to fetch
-    let url = 'http://api.openweathermap.org/data/2.5/forecast?q=' + city + '&lang=en&units=metric&appid=' + apiKey
+    let url = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&lang=en&units=metric&appid=' + apiKey
 
     fetch(url)
       .then((resp) => {
