@@ -25,7 +25,8 @@
                   <div class="form-group p-2">
                     <input type="text" class="form-control w-100" id="city-input" placeholder="Sydney" />
                     <button id="search-btn" class="btn search-btn btn-info w-100 text-white">Search</button>
-                    <hr class="section-break-1 bg-dark" />
+                    <p id="error-message" >City not found, try again!</p>
+                    <hr class="section-break-1 bg-dark m-0" />
                   </div>
                 </form>
                 <div class="recent p-2">
@@ -34,6 +35,7 @@
             </section>
     
             <!-- Uses a combination of col-* values to make full-size on small devices and half-size on medium or larger devices -->
+            <!--Template for displaying weather for city-->
             <section class="details col-12 col-sm-8 col-md-8 col-xl-9">
                 <article class="city-info border border-2 p-2">
                     <h1 class="city-date p-0">Sydney Thur 8th-Aug</h1>
@@ -46,51 +48,52 @@
                 <article class="forecast row">
                     <div class="col-12">
                         <h2>5-Day Forecast</h2>
-
+                        
+                        <!--Template for displaying forecast for city-->
                         <section class="forecast-cards row col-xl-12">
                             <div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-3">
                                 <div class="card p-2 ">
-                                  <h3 class="card-header">Day 1</h3>
-                                  <p id="T">Temp: 36*</p>
-                                  <p id="W">Wind 8.43 MHP</p>
-                                  <p id="H">Humidity: 44%</p>
-                                  <button class="btn btn-block btn-primary">Learn more.</button>
+                                    <h3 class="card-header">Mon Aug 07</h3>
+                                    <p id="T">Temp: 12.73°C</p>
+                                    <p id="W">Wind: 0.79 mph</p>
+                                    <p id="H">Humidity: 80%</p>
+                                    <button class="btn btn-block btn-primary">Learn more.</button>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-3">
                                 <div class="card p-2">
-                                  <h3 class="card-header">Day 2</h3>
-                                  <p id="T">Temp: 36*</p>
-                                  <p id="W">Wind 8.43 MHP</p>
-                                  <p id="H">Humidity: 44%</p>
-                                  <button class="btn btn-block btn-primary">Learn more.</button>
+                                    <h3 class="card-header">Mon Aug 07</h3>
+                                    <p id="T">Temp: 12.73°C</p>
+                                    <p id="W">Wind: 0.79 mph</p>
+                                    <p id="H">Humidity: 80%</p>
+                                    <button class="btn btn-block btn-primary">Learn more.</button>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 col-lg-4 col-xl-2">
                                 <div class="card p-2">
-                                  <h3 class="card-header">Day 3</h3>
-                                  <p id="T">Temp: 36*</p>
-                                  <p id="W">Wind 8.43 MHP</p>
-                                  <p id="H">Humidity: 44%</p>
-                                  <button class="btn btn-block btn-primary">Learn more.</button>
+                                    <h3 class="card-header">Mon Aug 07</h3>
+                                    <p id="T">Temp: 12.73°C</p>
+                                    <p id="W">Wind: 0.79 mph</p>
+                                    <p id="H">Humidity: 80%</p>
+                                    <button class="btn btn-block btn-primary">Learn more.</button>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 col-lg-4 col-xl-2">
                                 <div class="card p-2">
-                                  <h3 class="card-header">Day 4</h3>
-                                  <p id="T">Temp: 36*</p>
-                                  <p id="W">Wind 8.43 MHP</p>
-                                  <p id="H">Humidity: 44%</p>
-                                  <button class="btn btn-block btn-primary">Learn more.</button>
+                                    <h3 class="card-header">Mon Aug 07</h3>
+                                    <p id="T">Temp: 12.73°C</p>
+                                    <p id="W">Wind: 0.79 mph</p>
+                                    <p id="H">Humidity: 80%</p>
+                                    <button class="btn btn-block btn-primary">Learn more.</button>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 col-lg-4 col-xl-2">
                                 <div class="card p-2">
-                                  <h3 class="card-header">Day 5</h3>
-                                  <p id="T">Temp: 36*</p>
-                                  <p id="W">Wind 8.43 MHP</p>
-                                  <p id="H">Humidity: 44%</p>
-                                  <button class="btn btn-block btn-primary">More info.</button>
+                                    <h3 class="card-header">Mon Aug 07</h3>
+                                    <p id="T">Temp: 12.73°C</p>
+                                    <p id="W">Wind: 0.79 mph</p>
+                                    <p id="H">Humidity: 80%</p>
+                                    <button class="btn btn-block btn-primary">Learn more.</button>
                                 </div>
                             </div>
                         </section>

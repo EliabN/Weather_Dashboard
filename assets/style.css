@@ -8,6 +8,12 @@
    color: rgb(147, 196, 238)!important;; 
 }
 
+#error-message {
+    visibility: hidden;
+    text-align: center;
+    padding: 1%;
+}
+
 #search-btn {
     margin-top: 4%;
 }
