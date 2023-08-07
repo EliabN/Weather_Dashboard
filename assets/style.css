@@ -1,49 +1,59 @@
+/* Styles for the navbar */
 .navbar {
     background-image: linear-gradient(to right, #2c2cb8, #5417bc);
     justify-content: center;
-    
 }
 
+/* Styles for the navbar brand */
 .navbar-brand {
-   color: rgb(147, 196, 238)!important;; 
+    color: rgb(147, 196, 238) !important;
 }
 
+/* Styles for error message and description elements */
 #error-message, #description {
     visibility: hidden;
     text-align: center;
     padding: 1%;
 }
 
+/* Styles for the search button */
 #search-btn {
     margin-top: 4%;
 }
 
+/* Styles for the recent button */
 #recent-btn {
     margin-top: 2%;
     margin-bottom: 2%;
 }
 
+/* Styles for the city-info element */
 .city-info {
-    background-color:#2c2cb8
+    background-color: #2c2cb8;
 }
 
+/* Styles for the details element */
 .details {
     margin-top: 2%;
     padding-bottom: 0%;
 }
 
+/* Styles for the card header */
 .card-header {
-    background-color: #5417bc
+    background-color: #5417bc;
 }
 
+/* Styles for the forecast-details element */
 .forecast-details {
     background-color: #5417bc;
 }
 
-
+/* Media query for screen width at least 1200px */
 @media (min-width: 1200px) {
+    /* Styles for the forecast cards for screen width >= 1200px */
     .forecast-cards .col-xl-2 {
-    flex: 0 0 auto;
-    width: 20%;
-}
+        /* Set flex properties for the forecast cards */
+        flex: 0 0 auto;
+        width: 20%;
+    }
 }

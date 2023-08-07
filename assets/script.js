@@ -16,7 +16,6 @@ function addCityButtonListener() {
 
     // Loop through each element and add the event listener
     recentBtns.forEach((recentBtn) => {
-        console.log("Okay")
         recentBtn.addEventListener("click", displayRecent);
     });
 }
@@ -24,7 +23,7 @@ function addCityButtonListener() {
 // Call the function to add event listeners to existing buttons on page load
 addCityButtonListener();
 
-
+// Get name of city from input
 function getName(event) {
     event.preventDefault();
     // Get city name
@@ -36,27 +35,31 @@ function getName(event) {
     // Check text entered
     if (city === "") {
         console.log("Enter City");
+        // Display error
         displayError.style.visibility = "visible";
     } else {
         console.log("Got city");
+        // Call functions to fetch api data
         getWeather(city);
         getForecast(city)
     }
+    // City name
     console.log(city);
 }
 
 
-// Fetch the weather
+// Fetch the weather response
 function getWeather(city) {
-
+    // url to fetch
     let url = 'http://api.openweathermap.org/data/2.5/weather?q=' + city + '&lang=en&units=metric&appid=' + apiKey
 
     fetch(url)
       .then((resp) => {
-        console.log(resp);
+        //console.log(resp);
         // If city not found display message
         if (resp.status === 404) {
             console.log("Not Found")
+            // Display error
             displayError.style.visibility = "visible";
         }
         
@@ -65,11 +68,13 @@ function getWeather(city) {
           throw new Error("Weather data could not be fetched. Status: " + resp.statusText);
         }
 
-        
+        // covert and return json data type
         return resp.json();
       })
       .then((data) => {
-        console.log(data);
+        // Json data
+        //console.log(data);
+
         // Handle the fetched weather data here
         displayWeather(data)
       })
@@ -82,21 +87,23 @@ function getWeather(city) {
 
 
 function displayWeather(data) {
-    // Display message if city is found
+    // Display successful message if city is found
     displayError.style.visibility = "visible";
     displayError.textContent = "Search successful!"
-    console.log(data)
-    let date = new Date(data.dt *1000);
-    console.log(date)
 
-    // Weather information
+    // Covert dt to Date "ddd, MMM, DD"
+    let date = new Date(data.dt *1000);
+
+    // Main weather information
     let main = data.main
 
+    // Select the "city-info" card
     let display = document.querySelector('.city-info')
 
+    // Replace with ne html
     display.innerHTML = `<h1 class="city-date m-2 card-header">${data.name} ${date.toDateString()}</h1>
     <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-2 mb-3">
-        <p id="t">Temp: ${main.temp}°C</p>
+        <p id="t">Temp: ${Math.round(main.temp)}°C</p>
         <p id="w">Wind: ${data.wind.speed}</p>
         <p id="h">Humidity: ${main.humidity}%</p>
         <P id="d">Desc: ${data.weather[0].main}</P>
@@ -110,11 +117,12 @@ function displayWeather(data) {
     let resentBtns = document.getElementById('recent');
     var children = resentBtns.children;
 
-    console.log(children);
+    //console.log(children);
 
     // Flag to check if city is already present
     let isCityPresent = false;
 
+    // For loop to check if city button exists 
     for (let i = 0; i < children.length; i++) {
         let recentCity = children[i].children[0].innerText.toLowerCase();
         if (data.name.toLowerCase() === recentCity) {
@@ -143,20 +151,17 @@ function displayWeather(data) {
     }
 }
 
-
-
-
-
 // Fetch the forecast
 function getForecast(city) {
-
+    // url to fetch
     let url = 'http://api.openweathermap.org/data/2.5/forecast?q=' + city + '&lang=en&units=metric&appid=' + apiKey
 
     fetch(url)
       .then((resp) => {
         //console.log(resp);
         if (!resp.ok) {
-          throw new Error("Weather data could not be fetched. Status: " + resp.statusText);
+            // Display error
+            throw new Error("Weather data could not be fetched. Status: " + resp.statusText);
         }
         return resp.json();
       })
@@ -171,37 +176,35 @@ function getForecast(city) {
 }
 
 function displayForecast(data) {
-    console.log(data)
-
-    // Weather information
-    let main = data.list[0].dt_txt
-
-    //let time = data.list[0].dt_txt.split(" ")[1]
-
-    //console.log(time)
-
+    //console.log(data)
+    // Select the "forecast-cards" element
     let card = document.querySelector('.forecast-cards')
 
+    // Collection index
     let index = -1
     card.innerHTML = data.list.map(day => {
+        // Index plus 1
         index++
+
+        // Store time of the day
         let time = data.list[index].dt_txt.split(" ")[1];
-        //let time = dateTime[1];
+
+        // If of the day is noon
         if (time === '12:00:00') {
             // Weather property of each day
             let day = data.list[index]
 
             // Store date of day "ddd, mmm, DD"
             let date = new Date(day.dt *1000).toDateString().split(' 20')[0];
-            console.log(day)
 
-            let newG = `<div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-3">
+            // Replace with ne html
+            return `<div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-3">
             <div class="p-3 text-white">
                 <h3 class="card-header ">${date}</h3>
                 <div class="col-12">
                   <div class="forecast-details rounded-2 row align-items-center">
                     <div class="col">
-                      <p id="T">Temp: ${day.main.temp}°C</p>
+                      <p id="T">Temp: ${Math.round(day.main.temp)}°C</p>
                       <p id="W">Wind: ${day.wind.speed}mph</p>
                       <p id="H">Humidity: ${day.main.humidity}%</p>
                       <P id="d">Desc: ${day.weather[0].main}</P>
@@ -216,9 +219,6 @@ function displayForecast(data) {
                 </div>
             </div>
             </div>`
-
-            //let date = dateTime[0].split('-')[2]
-            return newG
         }
     }).join(' ');
 }
@@ -230,10 +230,24 @@ function displayRecent(event) {
     // Test name
     //cityName = "Perth"
 
-    getWeather(cityName)
-    getForecast(cityName)
-    console.log(cityName)
+    // Call functions
+    getWeather(cityName);
+    getForecast(cityName);
 }
+
+
+// Fist initial search on page load
+function firstCity() {
+    // City name
+    cityName = "Sydney";
+
+    // Call functions
+    getWeather(cityName);
+    getForecast(cityName);
+}
+
+// Search first city
+firstCity();
 
 
 
