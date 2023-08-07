@@ -18,9 +18,21 @@
     margin-top: 4%;
 }
 
+.city-info {
+    background-color:#2c2cb8
+}
+
 .details {
     margin-top: 2%;
     padding-bottom: 0%;
+}
+
+.card-header {
+    background-color: #5417bc
+}
+
+.forecast-details {
+    background-color: #5417bc;
 }
 
 
