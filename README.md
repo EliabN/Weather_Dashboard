@@ -1,6 +1,6 @@
 # Weather Dashboard
 A Dashboard showing the weather outlook for multiple cities.
-
+Visit the page [here](https://eliabn.github.io/Weather_Dashboard/)
 ## User Story
 
 ```
