@@ -1,4 +1,5 @@
-const apiKey = 'fa2010b8940dd9610445d3e38eaccf79'
+// API key
+const apiKey = 'fa2010b8940dd9610445d3e38eaccf79';
 
 // Name of city
 var cityInput = document.getElementById('city-input');
@@ -13,6 +14,9 @@ var displayError = document.getElementById("error-message");
 function addCityButtonListener() {
     // Get all elements with the class "recent-btn"
     var  recentBtns = document.querySelectorAll("#recent-btn");
+
+    // Hide message if visible
+    displayError.style.visibility = "hidden";
 
     // Loop through each element and add the event listener
     recentBtns.forEach((recentBtn) => {
@@ -37,11 +41,11 @@ function getName(event) {
         console.log("Enter City");
         // Display error
         displayError.style.visibility = "visible";
+        displayError.textContent = "City not found, try again!";
     } else {
-        console.log("Got city");
         // Call functions to fetch api data
         getWeather(city);
-        getForecast(city)
+        getForecast(city);
     }
     // City name
     console.log(city);
@@ -51,16 +55,17 @@ function getName(event) {
 // Fetch the weather response
 function getWeather(city) {
     // url to fetch
-    let url = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&lang=en&units=metric&appid=' + apiKey
+    let url = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&lang=en&units=metric&appid=' + apiKey;
 
     fetch(url)
       .then((resp) => {
         //console.log(resp);
         // If city not found display message
         if (resp.status === 404) {
-            console.log("Not Found")
+            console.log("Not Found");
             // Display error
             displayError.style.visibility = "visible";
+            displayError.textContent = "City not found, try again!";
         }
         
         // If any error display in console
@@ -76,7 +81,7 @@ function getWeather(city) {
         //console.log(data);
 
         // Handle the fetched weather data here
-        displayWeather(data)
+        displayWeather(data);
       })
       .catch((error) => {
         console.error("Error fetching weather data:", error);
@@ -87,18 +92,16 @@ function getWeather(city) {
 
 
 function displayWeather(data) {
-    // Display successful message if city is found
-    displayError.style.visibility = "visible";
-    displayError.textContent = "Search successful!"
+    
 
     // Covert dt to Date "ddd, MMM, DD"
     let date = new Date(data.dt *1000);
 
     // Main weather information
-    let main = data.main
+    let main = data.main;
 
     // Select the "city-info" card
-    let display = document.querySelector('.city-info')
+    let display = document.querySelector('.city-info');
 
     // Replace with ne html
     display.innerHTML = `<h1 class="city-date m-2 card-header">${data.name} ${date.toDateString()}</h1>
@@ -163,12 +166,19 @@ function displayWeather(data) {
         // Add the event listener to the new button
         recentBtn.addEventListener("click", displayRecent);
     }
+
+    // if more than one button
+    if (children.length > 1) {
+        // Display successful message if city is found
+        displayError.style.visibility = "visible";
+        displayError.textContent = "Search successful!";
+    }
 }
 
 // Fetch the forecast
 function getForecast(city) {
     // url to fetch
-    let url = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&lang=en&units=metric&appid=' + apiKey
+    let url = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&lang=en&units=metric&appid=' + apiKey;
 
     fetch(url)
       .then((resp) => {
@@ -181,24 +191,24 @@ function getForecast(city) {
       })
       .then((data) => {
         // Handle the fetched weather data here
-        displayForecast(data)
+        displayForecast(data);
       })
       .catch((error) => {
         console.error("Error fetching weather data:", error);
         // Handle the error here or display an error message to the user
 });
-}
+};
 
 function displayForecast(data) {
     //console.log(data)
     // Select the "forecast-cards" element
-    let card = document.querySelector('.forecast-cards')
+    let card = document.querySelector('.forecast-cards');
 
     // Collection index
-    let index = -1
+    let index = -1;
     card.innerHTML = data.list.map(day => {
         // Index plus 1
-        index++
+        index++;
 
         // Store time of the day
         let time = data.list[index].dt_txt.split(" ")[1];
@@ -206,7 +216,7 @@ function displayForecast(data) {
         // If of the day is noon
         if (time === '12:00:00') {
             // Weather property of each day
-            let day = data.list[index]
+            let day = data.list[index];
 
             // Store date of day "ddd, mmm, DD"
             let date = new Date(day.dt *1000).toDateString().split(' 20')[0];
@@ -233,7 +243,7 @@ function displayForecast(data) {
                 </div>
             </div>
             </div>`
-        }
+        };
     }).join(' ');
 
     // Select all buttons with class "more-info"
@@ -288,7 +298,7 @@ const buttons = document.querySelectorAll('.btn-primary');
 function redirect() {
     console.log('url');
     // Get the URL from the data-url attribute of the clicked button
-    const url = "https://worldweather.wmo.int/en/home.html"
+    const url = "https://worldweather.wmo.int/en/home.html";
   
     // Perform the redirection
     window.open(url);
