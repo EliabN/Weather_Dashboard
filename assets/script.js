@@ -249,5 +249,49 @@ function firstCity() {
 // Search first city
 firstCity();
 
+// Perform the redirection
+function navigateToURL(url) {
+    window.open(url, '_blank');
+    return false;
+}
+
+// Get all the buttons with the specified class
+const buttons = document.querySelectorAll('.btn-primary');
+
+// Function to handle button click and perform redirection
+function redirect(event) {
+    event.preventDefault()
+    console.log('url');
+    // Get the URL from the data-url attribute of the clicked button
+    const url = event.target.dataset.url;
+  
+    // Perform the redirection
+    window.open(url);
+  
+    // Log a message to verify that the function is executed upon button click
+    console.log('url');
+  
+    // Prevent the default behavior of the button click (optional)
+    return false;
+}
+
+// Or you can directly use the parent element without the function
+function navigateToURL(event, url) {
+    // Get the URL from the data-url attribute of the clicked button
+    //const url = event.target.dataset.url;
+  
+    // Perform the redirection
+    window.open(url, '_blank');
+  
+    // Trigger the parent article's click event
+    event.target.parentNode.click();
+}
+
+// Loop through all buttons and add the click event listener
+buttons.forEach((button) => {
+    console.log('url');
+    button.addEventListener('click', redirect);
+});
+
 
 
