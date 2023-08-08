@@ -107,11 +107,25 @@ function displayWeather(data) {
         <p id="w">Wind: ${data.wind.speed}</p>
         <p id="h">Humidity: ${main.humidity}%</p>
         <P id="d">Desc: ${data.weather[0].main}</P>
-        <button class="btn btn-primary">More info.</button>
+        <button id="more-info" class="btn btn-primary">More info.</button>
     </div>
     <div class="info-icon col-6 col-sm-6 col-md-6 col-lg-4 col-xl-2 mb-3">
         <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png" class="city-info-img" alt="Weather icon"/>
     </div>`;
+
+
+    // Now that the content is updated, attach an event listener to the button
+    const infoButton = document.getElementById('more-info');
+    infoButton.addEventListener('click', function(event) {
+        // Get the URL from the data-url attribute of the clicked button
+        const url = 'https://worldweather.wmo.int/en/home.html';
+
+        // Perform the redirection
+        window.open(url, '_blank');
+
+        // Prevent event propagation to parent elements
+        event.stopPropagation();
+    });
 
     // Get the recent element buttons
     let resentBtns = document.getElementById('recent');
@@ -221,6 +235,23 @@ function displayForecast(data) {
             </div>`
         }
     }).join(' ');
+
+    // Select all buttons with class "more-info"
+    const infoButtons = document.querySelectorAll('.btn-primary');
+
+    // Loop through each button and attach the event listener
+    infoButtons.forEach((button) => {
+        button.addEventListener('click', function(event) {
+            // Get the URL from the data-url attribute of the clicked button
+            const url = 'https://worldweather.wmo.int/en/home.html';
+    
+            // Perform the redirection
+            window.open(url, '_blank');
+    
+            // Prevent event propagation to parent elements
+            event.stopPropagation();
+        });
+    });
 }
 
 function displayRecent(event) {
@@ -249,27 +280,18 @@ function firstCity() {
 // Search first city
 firstCity();
 
-// Perform the redirection
-function navigateToURL(url) {
-    window.open(url, '_blank');
-    return false;
-}
 
 // Get all the buttons with the specified class
 const buttons = document.querySelectorAll('.btn-primary');
 
 // Function to handle button click and perform redirection
-function redirect(event) {
-    event.preventDefault()
+function redirect() {
     console.log('url');
     // Get the URL from the data-url attribute of the clicked button
-    const url = event.target.dataset.url;
+    const url = "https://worldweather.wmo.int/en/home.html"
   
     // Perform the redirection
     window.open(url);
-  
-    // Log a message to verify that the function is executed upon button click
-    console.log('url');
   
     // Prevent the default behavior of the button click (optional)
     return false;
@@ -279,21 +301,6 @@ function redirect(event) {
 buttons.forEach((button) => {
     button.addEventListener('click', redirect);
 });
-
-// Or you can directly use the parent element without the function
-function navigateToURL(event, url) {
-    // Get the URL from the data-url attribute of the clicked button
-    //const url = event.target.dataset.url;
-
-    console.log('url');
-    // Perform the redirection
-    window.open(url, '_blank');
-  
-    // Trigger the parent article's click event
-    event.target.parentNode.click();
-}
-
-
 
 
 
