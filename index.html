@@ -40,14 +40,14 @@
             <!-- Uses a combination of col-* values to make full-size on small devices and half-size on medium or larger devices -->
             <!--Template for displaying weather for city-->
             <section class="details col-12 col-sm-8 col-md-8 col-xl-9">
-                <article class="city-info rounded-3 border border-2 p-2 row text-white" onclick="navigateToURL(event, 'https://www.google.com')">
+                <article class="city-info rounded-3 border border-2 p-2 row text-white" >
                     <h1 class="city-date m-2 card-header">Sydney Mon Aug 07 2023</h1>
                     <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-2 mb-3">
                         <p id="t">Temp: 11.74°C</p>
                         <p id="w">Wind: 3.09</p>
                         <p id="h">Humidity: 89%</p>
                         <p id="d">Desc: Rain</p>
-                        <button class="btn btn-primary" >More info.</button>
+                        <button class="btn btn-primary" onclick="navigateToURL(event, 'https://www.google.com')">More info.</button>
                     </div>
                     <div class="info-icon col-6 col-sm-6 col-md-6 col-lg-4 col-xl-2 mb-3">
                         <img src="https://openweathermap.org/img/wn/10n@4x.png" class="city-info-img" alt="Weather icon">

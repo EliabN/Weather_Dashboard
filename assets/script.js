@@ -131,8 +131,8 @@ function displayWeather(data) {
         }
     }
 
-    // Check if the city is not present, then add a new button
-    if (!isCityPresent) {
+    // Check if the city is not present and buttons less than 10, then add a new button
+    if (!isCityPresent && children.length < 10) {
         // Get search section in html
         let searchSec = document.getElementById('recent');
       
@@ -275,11 +275,17 @@ function redirect(event) {
     return false;
 }
 
+// Loop through all buttons and add the click event listener
+buttons.forEach((button) => {
+    button.addEventListener('click', redirect);
+});
+
 // Or you can directly use the parent element without the function
 function navigateToURL(event, url) {
     // Get the URL from the data-url attribute of the clicked button
     //const url = event.target.dataset.url;
-  
+
+    console.log('url');
     // Perform the redirection
     window.open(url, '_blank');
   
@@ -287,11 +293,7 @@ function navigateToURL(event, url) {
     event.target.parentNode.click();
 }
 
-// Loop through all buttons and add the click event listener
-buttons.forEach((button) => {
-    console.log('url');
-    button.addEventListener('click', redirect);
-});
+
 
 
 
