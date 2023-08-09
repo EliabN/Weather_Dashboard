@@ -214,12 +214,19 @@ function displayForecast(data) {
         let time = data.list[index].dt_txt.split(" ")[1];
 
         // If of the day is noon
-        if (time === '12:00:00') {
+        if (time === '03:00:00') {
             // Weather property of each day
             let day = data.list[index];
 
             // Store date of day "ddd, mmm, DD"
             let date = new Date(day.dt *1000).toDateString().split(' 20')[0];
+
+            // Change icon to day icon
+            let icon = day.weather[0].icon.slice(0, 2) + 'd'
+            
+            // // Check time and compare icon -Debug
+            // let dat = new Date(day.dt *1000)
+            // console.log(day.weather[0].icon, icon)
 
             // Replace with ne html
             return `<div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-3">
@@ -234,7 +241,7 @@ function displayForecast(data) {
                       <P id="d">Desc: ${day.weather[0].main}</P>
                     </div>
                     <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-12 mb-3">
-                      <img src="https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png" class="city-info-img justify-content-center" alt="Weather icon" />
+                      <img src="https://openweathermap.org/img/wn/${icon}@2x.png" class="city-info-img justify-content-center" alt="Weather icon" />
                     </div>
                     <div class="d-flex justify-content-center">
                       <button class="btn btn-block btn-primary w-75 justify-content-center text-center m-3 mx-auto">Learn more.</button>
@@ -242,7 +249,7 @@ function displayForecast(data) {
                   </div>
                 </div>
             </div>
-            </div>`
+            </div>`;
         };
     }).join(' ');
 
