@@ -14,7 +14,7 @@ SO THAT I can plan a trip accordingly
 
 The following image shows the web application's appearance and functionality: click to visit page
 
-[![The weather app includes a search option, a list of cities, and a five-day forecast and current weather conditions for Atlanta.](./assets/06-server-side-apis-homework-demo.png)]
+[![The weather app includes a search option, a list of cities, and a five-day forecast and current weather conditions for Atlanta.](./assets/06-server-side-apis-homework-demo.png)](https://eliabn.github.io/Weather_Dashboard/)
 
 ## How application is created (extra info)
 
