@@ -1,5 +1,6 @@
 # Weather Dashboard
-A Dashboard showing the weather outlook for multiple cities.
+Weather app is an application that provides current and future weather forecasts in cities to in the browser and dynamically updated HTML and CSS using third-Party APIs
+
 Visit the page [here](https://eliabn.github.io/Weather_Dashboard/)
 ## User Story
 
@@ -11,9 +12,9 @@ SO THAT I can plan a trip accordingly
 
 ## Preview
 
-The following image shows the web application's appearance and functionality:
+The following image shows the web application's appearance and functionality: click to visit page
 
-![The weather app includes a search option, a list of cities, and a five-day forecast and current weather conditions for Atlanta.](./assets/06-server-side-apis-homework-demo.png)
+[![The weather app includes a search option, a list of cities, and a five-day forecast and current weather conditions for Atlanta.](./assets/06-server-side-apis-homework-demo.png)]
 
 ## How application is created (extra info)
 
